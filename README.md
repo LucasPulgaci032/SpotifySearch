@@ -1,6 +1,6 @@
 ## SpotifySearch
 
-This Java project allows you to search for artist information using the **Spotify Web API**.
+This Java Maven project allows you to search for artist information using the **Spotify Web API**.
 
 It retrieves data such as:
 - Artist popularity
