@@ -3,6 +3,7 @@ package org.example;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -33,8 +34,9 @@ public class ArtistRequest {
                 .setPrettyPrinting()
                 .create();
        var jsonData = gson.fromJson(artistResponse.body(), Object.class);
-        System.out.println(gson.toJson(jsonData));
-
+        FileWriter writer = new FileWriter("Infos.json");
+        writer.write(gson.toJson(jsonData));
+        writer.close();
     }
 
 }
