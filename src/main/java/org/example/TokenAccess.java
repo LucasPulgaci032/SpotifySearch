@@ -10,12 +10,20 @@ import java.net.http.HttpResponse;
 import java.util.Base64;
 
 public class TokenAccess {
+    private static String accessToken;
+    private static long expiresAt;
     private static String extractToken(String responseBody) {
         int start = responseBody.indexOf("\"access_token\":\"") + 16;
         int end = responseBody.indexOf("\"", start);
         return responseBody.substring(start, end);
     }
-    public static String getAccesToken() throws IOException, InterruptedException {
+    public static synchronized String getAccesToken() throws IOException, InterruptedException {
+        if (accessToken == null || System.currentTimeMillis() >= expiresAt) {
+            generateNewToken();
+        }
+        return accessToken;
+    }
+    public static void generateNewToken() throws IOException, InterruptedException {
         Dotenv dotenv = Dotenv.load();
         String clientId = dotenv.get("CLIENT_ID");
         String clientSecret = dotenv.get("CLIENT_SECRET");
@@ -30,7 +38,10 @@ public class TokenAccess {
                 .POST(HttpRequest.BodyPublishers.ofString("grant_type=client_credentials"))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        return extractToken(response.body());
+        System.out.println(response.body());
+        accessToken = extractToken(response.body());
+        expiresAt = System.currentTimeMillis() + (3600 * 1000);
+
     }
 
 

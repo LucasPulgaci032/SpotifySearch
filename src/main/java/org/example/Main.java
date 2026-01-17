@@ -31,3 +31,4 @@ public class Main {
         sc.close();
     }
 }
+//http://localhost:8080/SpotifySearch-1.0-SNAPSHOT/

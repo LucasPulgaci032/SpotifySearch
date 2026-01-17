@@ -1,47 +1,42 @@
 {
   "artists": {
-    "href": "https://api.spotify.com/v1/search?offset\u003d0\u0026limit\u003d1\u0026query\u003dmatue\u0026type\u003dartist",
+    "href": "https://api.spotify.com/v1/search?offset\u003d0\u0026limit\u003d1\u0026query\u003dcardi%20b\u0026type\u003dartist",
     "limit": 1.0,
-    "next": "https://api.spotify.com/v1/search?offset\u003d1\u0026limit\u003d1\u0026query\u003dmatue\u0026type\u003dartist",
+    "next": "https://api.spotify.com/v1/search?offset\u003d1\u0026limit\u003d1\u0026query\u003dcardi%20b\u0026type\u003dartist",
     "offset": 0.0,
-    "total": 100.0,
+    "total": 899.0,
     "items": [
       {
         "external_urls": {
-          "spotify": "https://open.spotify.com/artist/5nP8x4uEFjAAmDzwOEc9b8"
+          "spotify": "https://open.spotify.com/artist/4kYSro6naA4h99UJvo89HB"
         },
         "followers": {
-          "total": 1.4374555E7
+          "total": 2.6327306E7
         },
-        "genres": [
-          "brazilian trap",
-          "trap",
-          "brazilian hip hop",
-          "trap funk"
-        ],
-        "href": "https://api.spotify.com/v1/artists/5nP8x4uEFjAAmDzwOEc9b8",
-        "id": "5nP8x4uEFjAAmDzwOEc9b8",
+        "genres": [],
+        "href": "https://api.spotify.com/v1/artists/4kYSro6naA4h99UJvo89HB",
+        "id": "4kYSro6naA4h99UJvo89HB",
         "images": [
           {
-            "url": "https://i.scdn.co/image/ab6761610000e5eb383a90d1849dfb7f0c11d809",
+            "url": "https://i.scdn.co/image/ab6761610000e5eba23286f24edd4a7dbdc6311d",
             "height": 640.0,
             "width": 640.0
           },
           {
-            "url": "https://i.scdn.co/image/ab67616100005174383a90d1849dfb7f0c11d809",
+            "url": "https://i.scdn.co/image/ab67616100005174a23286f24edd4a7dbdc6311d",
             "height": 320.0,
             "width": 320.0
           },
           {
-            "url": "https://i.scdn.co/image/ab6761610000f178383a90d1849dfb7f0c11d809",
+            "url": "https://i.scdn.co/image/ab6761610000f178a23286f24edd4a7dbdc6311d",
             "height": 160.0,
             "width": 160.0
           }
         ],
-        "name": "Matuê",
-        "popularity": 81.0,
+        "name": "Cardi B",
+        "popularity": 82.0,
         "type": "artist",
-        "uri": "spotify:artist:5nP8x4uEFjAAmDzwOEc9b8"
+        "uri": "spotify:artist:4kYSro6naA4h99UJvo89HB"
       }
     ]
   }

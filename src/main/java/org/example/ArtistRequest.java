@@ -13,15 +13,16 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
 public class ArtistRequest {
+
     public String findArtist(String artist){
+
        return URLEncoder.encode(artist, StandardCharsets.UTF_8);
 
     }
 
-    public static void searchArtist(String artistName) throws IOException, InterruptedException {
+    public static Object searchArtist(String artistName) throws IOException, InterruptedException {
        ArtistRequest name = new ArtistRequest();
        String query = name.findArtist(artistName);
-
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest artistRequest = HttpRequest.newBuilder()
@@ -34,9 +35,9 @@ public class ArtistRequest {
                 .setPrettyPrinting()
                 .create();
        var jsonData = gson.fromJson(artistResponse.body(), Object.class);
-        FileWriter writer = new FileWriter("Infos.json");
-        writer.write(gson.toJson(jsonData));
-        writer.close();
+        System.out.println(jsonData);
+        return jsonData;
+
     }
 
 }
