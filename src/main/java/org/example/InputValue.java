@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet("/InputValue")
 public class InputValue extends HttpServlet {
@@ -18,12 +20,17 @@ public class InputValue extends HttpServlet {
        String artist = request.getParameter("artist");
 
        try {
-
+            Map<String,Object> mergedJson = new HashMap<>();
            Object result = ArtistRequest.searchArtist(artist);
+           String lastFmResult = ArtistRequest.lastFmRequest(artist);
+
             Gson gson = new Gson();
-           // Mostra o resultado no navegador
-           String jsonResult = gson.toJson(result);
+           mergedJson.put("Spotify",result);
+           mergedJson.put("lastFm",gson.fromJson(lastFmResult, Object.class));
+
+           String jsonResult = gson.toJson(mergedJson);
            response.getWriter().write(jsonResult);
+           response.setContentType("application/json;charset=UTF-8");
        } catch (Exception e) {
            response.getWriter().write("{\"error\":\"" + e.getMessage() + "\"}");
        }

@@ -2,7 +2,7 @@ package org.example;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
+import io.github.cdimascio.dotenv.Dotenv;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
@@ -13,7 +13,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
 public class ArtistRequest {
-
+    public static String API_KEY = Dotenv.load().get("LAST_FM_API_KEY");
     public String findArtist(String artist){
 
        return URLEncoder.encode(artist, StandardCharsets.UTF_8);
@@ -38,6 +38,21 @@ public class ArtistRequest {
         System.out.println(jsonData);
         return jsonData;
 
+    }
+
+    public static String lastFmRequest(String artistName) throws IOException, InterruptedException {
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://ws.audioscrobbler.com/2.0/" +
+                        "?method=artist.getInfo" +
+                        "&artist=" + URLEncoder.encode(artistName, StandardCharsets.UTF_8) +
+                        "&api_key=" + API_KEY +
+                        "&format=json"))
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
     }
 
 }
